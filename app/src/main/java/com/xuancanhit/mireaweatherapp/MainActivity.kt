@@ -22,27 +22,47 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 import com.xuancanhit.mireaweatherapp.ui.theme.BackgroundDefault
 import com.xuancanhit.mireaweatherapp.ui.theme.MireaWeatherAppTheme
 
 class MainActivity : ComponentActivity() {
-    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-    @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MireaWeatherAppTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    WeatherPage()
-                }
+
+                val navController =  rememberNavController()
+
+//                Scaffold (
+//                    topBar = {
+//
+//                    },
+//                    floatingActionButton = {},
+//                    bottomBar = {
+//
+//                    }
+//                        ) {
+//
+//                }
+
+
+
+
+
+//                // A surface container using the 'background' color from the theme
+//                Surface(
+//                    modifier = Modifier.fillMaxSize(),
+//                    color = MaterialTheme.colorScheme.background
+//                ) {
+//                    WeatherPage()
+//                }
             }
         }
     }
 }
+
+
 
 @Composable
 fun WeatherPage() {
@@ -130,10 +150,10 @@ fun HeaderImage() {
 }
 
 
-@Preview(showBackground = true, widthDp = 390, heightDp = 800)
-@Composable
-fun DefaultPreview() {
-    MireaWeatherAppTheme {
-        WeatherPage()
-    }
-}
+//@Preview(showBackground = true, widthDp = 390, heightDp = 800)
+//@Composable
+//fun DefaultPreview() {
+//    MireaWeatherAppTheme {
+//        WeatherPage()
+//    }
+//}
