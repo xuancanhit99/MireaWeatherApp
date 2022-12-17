@@ -1,6 +1,6 @@
 package com.xuancanhit.mireaweatherapp.domain.model
 
-data class Forecast(
+data class ForecastCity(
     val weatherList: List<ForecastWeather>,
     val cityDtoData: City
 )
