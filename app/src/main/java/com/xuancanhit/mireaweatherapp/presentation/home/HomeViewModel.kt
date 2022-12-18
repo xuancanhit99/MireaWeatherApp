@@ -1,18 +1,16 @@
-package com.xuancanhit.mireaweatherapp.presentation.screens.home
+package com.xuancanhit.mireaweatherapp.presentation.home
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.xuancanhit.mireaweatherapp.core.common.Resource
-import com.xuancanhit.mireaweatherapp.core.utils.ExceptionTitles
 import com.xuancanhit.mireaweatherapp.domain.model.City
-import com.xuancanhit.mireaweatherapp.domain.model.ForecastCity
 import com.xuancanhit.mireaweatherapp.domain.usecase.forecast.*
 import com.xuancanhit.mireaweatherapp.domain.usecase.location.GetLocationUseCase
+import com.xuancanhit.mireaweatherapp.core.common.Resource
+import com.xuancanhit.mireaweatherapp.core.utils.ExceptionTitles
+import com.xuancanhit.mireaweatherapp.domain.model.ForecastCity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import java.lang.Exception

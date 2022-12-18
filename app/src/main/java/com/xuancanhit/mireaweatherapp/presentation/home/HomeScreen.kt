@@ -1,51 +1,75 @@
-package com.xuancanhit.mireaweatherapp.presentation.screens.home
+package com.xuancanhit.mireaweatherapp.presentation.home
 
+import android.annotation.SuppressLint
 import android.app.Activity
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import com.xuancanhit.mireaweatherapp.R
+import com.xuancanhit.mireaweatherapp.core.utils.AppStrings
 import com.xuancanhit.mireaweatherapp.core.helpers.EpochConverter
 import com.xuancanhit.mireaweatherapp.core.helpers.SetError
-import com.xuancanhit.mireaweatherapp.core.utils.AppStrings
+import com.xuancanhit.mireaweatherapp.presentation.component.*
 import com.xuancanhit.mireaweatherapp.core.utils.ErrorCardConsts
 import com.xuancanhit.mireaweatherapp.core.utils.ExceptionTitles
 import com.xuancanhit.mireaweatherapp.domain.model.ForecastCity
-import com.xuancanhit.mireaweatherapp.presentation.component.*
 
-
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun HomeScreen(
+    navController: NavHostController,
     viewModel: HomeViewModel,
-    padding: PaddingValues,
     setFabOnClick: (() -> Unit) -> Unit,
-    onNavigateToSearchCityScreen: () -> Unit
 ) {
+
 //    LaunchedEffect(Unit) {
 //        setFabOnClick { viewModel.fetchWeather() }
 //    }
 
+
     val homeCurrentWeatherState by viewModel.homeForecastState.collectAsState()
     val activity = (LocalContext.current as? Activity)
 
-    Surface(
-        modifier = Modifier
-            .padding(padding)
-    ) {
+    Surface() {
         WeatherSection(homeCurrentWeatherState) { activity?.finish() }
     }
 
+//    Scaffold(
+//        modifier = Modifier.fillMaxSize()) {
+//        //BackgroundImage()
+//        MenuIcon { onNavigateToSearchCityScreen() }
+//        WeatherSection(homeCurrentWeatherState) { activity?.finish() }
+//
+//    }
 }
 
+//@Composable
+//private fun BackgroundImage() {
+//    Box(modifier = Modifier.fillMaxSize()) {
+//        Image(
+//            modifier = Modifier.fillMaxSize(),
+//            painter = painterResource(id = R.drawable.background),
+//            contentDescription = null,
+//            contentScale = ContentScale.Crop
+//        )
+//    }
+//}
 
 @Composable
 private fun WeatherSection(currentWeatherState: HomeForecastState, errorCardOnClick: () -> Unit) {
@@ -117,7 +141,7 @@ private fun DetailsSection(forecast: ForecastCity) {
         Card(
             modifier = Modifier
                 .fillMaxWidth(),
-            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondary)
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.onSurface)
         ) {
             Column(
                 modifier = Modifier
@@ -168,3 +192,4 @@ private fun WeatherDetailSection(currentWeather: ForecastCity) {
         value2 = "${currentWeather.weatherList[0].weatherData.pressure}"
     )
 }
+
