@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.sp
 import com.xuancanhit.mireaweatherapp.core.helpers.HourConverter
 import com.xuancanhit.mireaweatherapp.domain.model.ForecastWeather
 import com.xuancanhit.mireaweatherapp.core.utils.WeatherType
+import com.xuancanhit.mireaweatherapp.ui.theme.PurpleGrey40
 
 @Composable
 fun ForecastLazyRow(forecasts: List<ForecastWeather>) {
@@ -55,7 +56,7 @@ private fun WeatherCard(date: String? = null, time: String, weatherIcon: Int, de
     Card(
         modifier = Modifier,
         shape = MaterialTheme.shapes.large,
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondary)
+        colors = CardDefaults.cardColors(containerColor = PurpleGrey40)
     ) {
         Column(
             modifier = Modifier.padding(vertical = 16.dp, horizontal = 8.dp),

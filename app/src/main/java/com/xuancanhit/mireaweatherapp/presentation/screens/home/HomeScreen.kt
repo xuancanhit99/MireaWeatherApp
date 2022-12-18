@@ -112,12 +112,11 @@ private fun CurrentWeatherSection(todayWeather: ForecastCity) {
 private fun DetailsSection(forecast: ForecastCity) {
     Box(
         modifier = Modifier.fillMaxSize(),
-        Alignment.Center
     ) {
         Card(
             modifier = Modifier
                 .fillMaxWidth(),
-            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondary)
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primary)
         ) {
             Column(
                 modifier = Modifier

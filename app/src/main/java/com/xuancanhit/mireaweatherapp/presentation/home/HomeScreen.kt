@@ -49,14 +49,6 @@ fun HomeScreen(
     Surface() {
         WeatherSection(homeCurrentWeatherState) { activity?.finish() }
     }
-
-//    Scaffold(
-//        modifier = Modifier.fillMaxSize()) {
-//        //BackgroundImage()
-//        MenuIcon { onNavigateToSearchCityScreen() }
-//        WeatherSection(homeCurrentWeatherState) { activity?.finish() }
-//
-//    }
 }
 
 //@Composable
@@ -141,7 +133,7 @@ private fun DetailsSection(forecast: ForecastCity) {
         Card(
             modifier = Modifier
                 .fillMaxWidth(),
-            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.onSurface)
+            colors = CardDefaults.cardColors(containerColor = Color.Transparent)
         ) {
             Column(
                 modifier = Modifier

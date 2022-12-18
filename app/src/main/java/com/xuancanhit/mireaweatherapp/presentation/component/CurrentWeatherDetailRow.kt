@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.xuancanhit.mireaweatherapp.ui.theme.DarkBlue
 
 @Composable
 fun CurrentWeatherDetailRow(title1: String, value1: String, title2: String, value2: String) {
@@ -28,7 +29,7 @@ fun CurrentWeatherDetailRow(title1: String, value1: String, title2: String, valu
 private fun CurrentWeatherDetailCard(title: String, value: String) {
     Card(
         modifier = Modifier.size(180.dp),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.onSecondary),
+        colors = CardDefaults.cardColors(containerColor = DarkBlue),
         shape = MaterialTheme.shapes.small,
         border = null
     ) {
