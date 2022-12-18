@@ -1,6 +1,9 @@
 package com.xuancanhit.mireaweatherapp.presentation.component
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -8,8 +11,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.xuancanhit.mireaweatherapp.ui.theme.BackgroundDark
 import com.xuancanhit.mireaweatherapp.ui.theme.DarkBlue
 
 @Composable
@@ -17,7 +22,7 @@ fun CurrentWeatherDetailRow(title1: String, value1: String, title2: String, valu
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(start = 16.dp, end = 16.dp, bottom = 16.dp),
+            .padding(start = 16.dp, end = 16.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         CurrentWeatherDetailCard(title = title1, value = value1)
@@ -28,9 +33,9 @@ fun CurrentWeatherDetailRow(title1: String, value1: String, title2: String, valu
 @Composable
 private fun CurrentWeatherDetailCard(title: String, value: String) {
     Card(
-        modifier = Modifier.size(180.dp),
+        modifier = Modifier.size(172.dp),
         colors = CardDefaults.cardColors(containerColor = DarkBlue),
-        shape = MaterialTheme.shapes.small,
+        shape = RoundedCornerShape(15.dp),
         border = null
     ) {
         Box(modifier = Modifier.fillMaxWidth().padding(start = 8.dp, top = 8.dp), Alignment.TopStart) {
@@ -38,6 +43,7 @@ private fun CurrentWeatherDetailCard(title: String, value: String) {
         }
         Box(modifier = Modifier.fillMaxSize(), Alignment.Center) {
             Text(
+                modifier = Modifier.padding(bottom = 25.dp),
                 text = value,
                 style = MaterialTheme.typography.displayMedium.copy(fontSize = 36.sp)
             )

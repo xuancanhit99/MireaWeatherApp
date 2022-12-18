@@ -38,8 +38,9 @@ fun HomeScreen(
     val activity = (LocalContext.current as? Activity)
 
     Surface(
+        color = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
         modifier = Modifier
-            .padding(padding)
+            .padding(padding),
     ) {
         WeatherSection(homeCurrentWeatherState) { activity?.finish() }
     }
@@ -80,6 +81,19 @@ private fun WeatherSection(currentWeatherState: HomeForecastState, errorCardOnCl
 }
 
 @Composable
+private fun capitalizeDes(todayWeather: ForecastCity): String {
+    val line = todayWeather.weatherList[0].weatherStatus[0].description
+    val arr: List<String> = line.split(" ")
+    val sb = StringBuffer()
+    for (i in arr.indices) {
+        sb.append(arr[i][0].uppercaseChar())
+            .append(arr[i].substring(1)).append(" ")
+    }
+    return sb.toString().trim { it <= ' ' }
+    //return line[0].uppercaseChar().toString() + line.substring(1)
+}
+
+@Composable
 private fun CurrentWeatherSection(todayWeather: ForecastCity) {
     Column(
         modifier = Modifier
@@ -97,9 +111,9 @@ private fun CurrentWeatherSection(todayWeather: ForecastCity) {
             style = MaterialTheme.typography.displayLarge
         )
         Text(
-            text = todayWeather.weatherList[0].weatherStatus[0].description,
+            text = capitalizeDes(todayWeather),
             style = MaterialTheme.typography.displaySmall,
-            color = Color.Gray
+            modifier = Modifier.padding(bottom = 10.dp)
         )
         Text(
             text = "H:${todayWeather.cityDtoData.coordinate.longitude}°  L:${todayWeather.cityDtoData.coordinate.latitude}°",
