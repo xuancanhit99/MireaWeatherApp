@@ -1,6 +1,7 @@
 package com.xuancanhit.mireaweatherapp.presentation.component
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -9,7 +10,9 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -35,23 +38,32 @@ fun CityWeatherCard(
         colors = CardDefaults.cardColors(containerColor = DarkBlue),
         shape = MaterialTheme.shapes.medium
     ) {
-        //WeatherImage(weatherImage = weatherImage)
-        WeatherInfo(degree, latitude, longitude, city, country, description, onClick, isItDb)
+        WeatherImage(degree, latitude, longitude, city, country, description, onClick, isItDb,weatherImage = weatherImage)
     }
 }
 
 @Composable
-private fun WeatherImage(weatherImage: Int) {
+private fun WeatherImage(
+    degree: String,
+    latitude: Double,
+    longitude: Double,
+    city: String,
+    country: String,
+    description: String,
+    onClick: () -> Unit = {},
+    isItDb: Boolean = false,
+    weatherImage: Int
+) {
     Box(
         modifier = Modifier.fillMaxSize(),
         Alignment.CenterEnd
-
     ) {
         Image(
             modifier = Modifier.size(LocalConfiguration.current.screenWidthDp.dp / 2),
             painter = painterResource(id = weatherImage),
-            contentDescription = null
+            contentDescription = null,
         )
+        WeatherInfo(degree, latitude, longitude, city, country, description, onClick, isItDb)
     }
 }
 
