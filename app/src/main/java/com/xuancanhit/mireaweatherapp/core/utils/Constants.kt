@@ -72,15 +72,15 @@ object AppStrings {
 }
 
 object WeatherConditions {
-    const val CLEAR_SKY = "Clear Sky"
-    const val FEW_CLOUDS = "Few Clouds"
-    const val SCATTERED_CLOUDS = "Scattered Clouds"
-    const val BROKEN_CLOUDS = "Broken Clouds"
-    const val SHOWER_RAIN = "Shower Rain"
-    const val RAIN = "Rain"
-    const val THUNDERSTORM = "Thunderstorm"
-    const val SNOW = "Snow"
-    const val MIST = "Mist"
+    const val CLEAR_SKY = "clear sky"
+    const val FEW_CLOUDS = "few clouds"
+    const val SCATTERED_CLOUDS = "scattered clouds"
+    const val BROKEN_CLOUDS = "broken clouds"
+    const val SHOWER_RAIN = "shower rain"
+    const val RAIN = "rain"
+    const val THUNDERSTORM = "thunderstorm"
+    const val SNOW = "snow"
+    const val MIST = "mist"
 }
 
 object MainWeatherConditions {

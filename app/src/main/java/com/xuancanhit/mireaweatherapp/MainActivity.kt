@@ -24,6 +24,7 @@ import com.xuancanhit.mireaweatherapp.presentation.navigation.NavGraph
 import com.xuancanhit.mireaweatherapp.presentation.navigation.NavScreen
 import com.xuancanhit.mireaweatherapp.presentation.screens.home.HomeViewModel
 import com.xuancanhit.mireaweatherapp.presentation.screens.home.view.HomeTopBar
+import com.xuancanhit.mireaweatherapp.presentation.screens.manage.ManageViewModel
 import com.xuancanhit.mireaweatherapp.ui.theme.MireaWeatherAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -31,7 +32,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private val homeViewModel: HomeViewModel by viewModels()
-    //private val searchCityViewModel: SearchCityViewModel by viewModels()
+    private val manageViewModel: ManageViewModel by viewModels()
     private lateinit var permissionLauncher: ActivityResultLauncher<Array<String>>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,7 +62,7 @@ class MainActivity : ComponentActivity() {
                     topBar = {
                         HomeTopBar(
                             when (currentRoute) {
-                                NavScreen.HomeScreen.route -> "Weather"
+                                NavScreen.HomeScreen.route -> "Home"
                                 NavScreen.ManageCities.route -> "Manage"
                                 else -> ""
                             }
@@ -76,7 +77,11 @@ class MainActivity : ComponentActivity() {
                                     contentDescription = null
                                 )
                             },
-                            text = { Text("Update") }, onClick = { fabOnClick?.invoke() }
+                            text = { Text("Update") },
+                            onClick = {
+                                homeViewModel.loadLocation()
+                                fabOnClick?.invoke()
+                            }
                         )
                     },
                     bottomBar = {
@@ -115,7 +120,7 @@ class MainActivity : ComponentActivity() {
                     },
 
                     content = {
-                        NavGraph(navController = navController, it, homeViewModel, setFabOnClick)
+                        NavGraph(navController = navController, it, homeViewModel, manageViewModel, setFabOnClick)
                     })
             }
         }
