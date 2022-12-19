@@ -9,10 +9,13 @@ import androidx.lifecycle.viewModelScope
 import com.xuancanhit.mireaweatherapp.core.common.Resource
 import com.xuancanhit.mireaweatherapp.core.helpers.HourConverter
 import com.xuancanhit.mireaweatherapp.core.utils.Constants
+import com.xuancanhit.mireaweatherapp.core.utils.ExceptionTitles
 import com.xuancanhit.mireaweatherapp.core.utils.WeatherType
+import com.xuancanhit.mireaweatherapp.domain.model.ForecastCity
 import com.xuancanhit.mireaweatherapp.domain.model.MyCity
 import com.xuancanhit.mireaweatherapp.domain.usecase.forecast.GetForecastWithCityNameUseCase
 import com.xuancanhit.mireaweatherapp.domain.usecase.my_city.*
+import com.xuancanhit.mireaweatherapp.presentation.screens.home.HomeForecastState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -78,6 +81,29 @@ class ManageViewModel @Inject constructor(
             }
         }
     }
+
+
+//    fun loadLocation(forecastCity: ForecastCity) {
+//        _manageState.value = ManageState.Loading
+//        viewModelScope.launch(Dispatchers.IO) {
+//            try {
+//                val locationData = forecastCity.cityDtoData.coordinate
+//                if (locationData != null) {
+//                    fetchForecast(locationData.latitude, locationData.longitude)
+//                } else if (isForecastCached()) {
+//                    getCachedForecast()
+//                } else {
+//                    _homeForecastState.value = HomeForecastState.Error(ExceptionTitles.NO_INTERNET_CONNECTION)
+//                }
+//            } catch (e: java.lang.Exception) {
+//                if (isForecastCached()) {
+//                    getCachedForecast()
+//                } else {
+//                    _homeForecastState.value = HomeForecastState.Error(e.message)
+//                }
+//            }
+//        }
+//    }
 
     private suspend fun fetchForecastWithCityName(cityName: String) {
         when (val result = getForecastWithCityName.getForecast(cityName)) {

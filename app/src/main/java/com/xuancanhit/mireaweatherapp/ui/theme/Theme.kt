@@ -70,13 +70,13 @@ fun MireaWeatherAppTheme(
             val window = (view.context as Activity).window
 
             if(darkTheme){
-                window.statusBarColor = Color.Transparent.toArgb()
+                window.statusBarColor = BackgroundDark.toArgb()
                 window.navigationBarColor = Color.Transparent.toArgb()
 //                WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
 //                WindowCompat.getInsetsController(window, view).isAppearanceLightNavigationBars = darkTheme
 
             }else{
-                window.statusBarColor = Color.Transparent.toArgb()
+                window.statusBarColor = BackgroundDark.toArgb()
                 window.navigationBarColor = Color.Transparent.toArgb()
 //                window.statusBarColor = BackgroundDefault.toArgb()
 //                window.navigationBarColor = BackgroundDefault.toArgb()

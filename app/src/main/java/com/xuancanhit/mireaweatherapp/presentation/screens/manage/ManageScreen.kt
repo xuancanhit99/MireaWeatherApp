@@ -161,6 +161,8 @@ private fun WantedCityWeatherSection(forecast: ForecastCity, viewModel: ManageVi
                     )
                 )
             }
+            //onClick1 = {
+//            }
         )
     }
 }
